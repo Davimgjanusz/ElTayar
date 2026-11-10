@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-slate-600 antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-slate-900;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-el-red-600;
+  }
+
+  button:not(:disabled),
+  summary,
+  label[for] {
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* Empena do logotipo aplicada às imagens de destaque. */
+  .clip-gable {
+    clip-path: polygon(0 16%, 50% 0, 100% 16%, 100% 100%, 0 100%);
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .modal::backdrop {
+    background: rgb(2 6 23 / 0.92);
+  }
+
+  /* Mapa monocromático: só os pinos carregam a cor da marca. */
+  .map-mono .leaflet-tile-pane {
+    filter: grayscale(1) contrast(0.92) brightness(1.04);
+  }
+
+  .map-mono .leaflet-container {
+    @apply bg-slate-100 font-sans;
+  }
+
+  .map-mono .leaflet-popup-content-wrapper {
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 24px rgb(15 23 42 / 0.18);
+  }
+
+  .map-mono .leaflet-popup-content {
+    margin: 12px 14px;
+    line-height: 1.4;
+  }
+
+  .map-pin {
+    background: none;
+    border: 0;
+  }
+}
